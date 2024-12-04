@@ -1,0 +1,39 @@
+body {
+    height: 100vh;
+
+    margin: 0;
+
+    background-color: rgb(158, 152, 152);
+}
+
+.main {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginForm {
+    width: 300px;
+    height: auto;
+
+    padding: 5px;
+
+    background-color: rgb(213, 103, 103);
+    border: 5px gray solid;
+    border-style:inset;
+}
+
+td {
+    padding: 5px;
+}
+
+th {
+    padding: 5px;
+
+    vertical-align: middle;
+    text-align: center;
+}
+

@@ -1,19 +1,44 @@
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>htmx test</title>
+    <link rel="stylesheet" href="./styles.css"/>
     <script src="./htmx.min.js"></script>
+    <meta name="htmx-config" content='{"selfRequestsOnly":false}'>
 </head>
 
 <body>
-    yo
-    <button hx-get="/btn-test" hx-target="#result">
-        ClickMe
-    </button>
-
-    <div id="result"></div>
+<div class="main">
+    <form method="POST" class="loginForm">
+        <table class="loginFields">
+            <th>
+                <b>Login Form</b>
+            </th>
+            <tr>
+                <td>
+                    <label for="username">Username</label>
+                </td>
+                <td>
+                    <input type="text" id="username" name="username" placeholder="Enter your username" required></input>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="password">Password</label>
+                </td>
+                <td>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required></input>
+                </td>
+            </tr>
+            <th>
+                <button type="submit" id="login">Log In</button>
+            </th>
+        </table>
+    </form>
+</div>
 </body>
 
 </html>
