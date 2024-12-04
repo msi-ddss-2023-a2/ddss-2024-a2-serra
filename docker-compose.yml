@@ -1,0 +1,26 @@
+services:
+  php:
+    image: php:8.1.31-apache
+    volumes:
+      - ./src:/var/www/html
+    ports:
+      - 0:80
+    networks:
+      - mynetwork
+
+  postgresql:
+    image: postgres:latest
+    environment:
+      POSTGRES_PASSWORD: abadacas1312
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ./init-scripts:/docker-entrypoint-initdb.d
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
+    driver: bridge
+
+volumes:
+  postgres-data:
