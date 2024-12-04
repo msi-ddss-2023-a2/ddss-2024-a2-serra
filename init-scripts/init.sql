@@ -1,14 +1,8 @@
-CREATE USER ddss_user WITH PASSWORD '$3cr37_p4$$';
-
-CREATE DATABASE ddss_db;
-
-GRANT ALL PRIVILEGES ON DATABASE ddss_db TO ddss_user;
-
 \c ddss_db;
 
 CREATE TABLE users(
     id SERIAL PRIMARY KEY,
-    name VARCHAR(100),
+    username VARCHAR(100),
     password TEXT NOT NULL
 );
 
