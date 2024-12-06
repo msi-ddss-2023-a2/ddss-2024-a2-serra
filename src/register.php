@@ -17,24 +17,38 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = trim($_POST['username']);
     $password = trim($_POST['password']);
 
-    $sql = "SELECT id, username, password FROM users WHERE username = :username LIMIT 1";
-    $stmt = $pdo->prepare($sql);    // prepares sql statement (good)
+    // verify if user already exists?
+    $sql_verify = "SELECT username FROM users WHERE username = :username";
+    $stmt = $pdo->prepare($sql_verify);
     $stmt->bindParam(':username', $username, PDO::PARAM_STR);
     $stmt->execute();
 
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    // matches password against a hash (good)
-    if ($user && password_verify($password, $user['password'])) {
-        $_SESSION['user_id'] = $user['id'];
-        $_SESSION['username'] = $user['username'];
+    if ($user) {
+        // already exists
+        echo "Username " . $user["username"] . " already exists. Try another one!";
+        die();
+    }
 
-        // header("Location: home");
-        header("HX-Redirect: home");
+    $hash_options = [
+        'cost' => 12
+    ];
+
+    // adds new user with hashed password to db
+    $sql = "INSERT INTO users (username, password) VALUES (:username, :password)";
+    $stmt = $pdo->prepare($sql);    // prepares sql statement (good)
+    $stmt->bindParam(':username', $username, PDO::PARAM_STR);
+    $hashed_pw = password_hash($password, PASSWORD_BCRYPT, $hash_options);
+    $stmt->bindParam(':password', $hashed_pw, PDO::PARAM_STR);
+
+    if ($stmt->execute()) {
+        // header("Location: login");
+        echo "Registration successful! You may now <a href='/login'>login</a> as " . htmlspecialchars($username) . ".";
+        // sleep(2);
         die();
     } else {
-        // http_response_code(401);
-        echo "Invalid username or password";
+        echo "Error: " . $stmt->error;
         die();
     }
 
@@ -49,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Xtremely Secure - Login</title>
+    <title>Xtremely Secure - Register</title>
     <link rel="stylesheet" href="./styles.css"/>
     
     <script src="./htmx.min.js"></script>
@@ -61,11 +75,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <div class="main">
 
     <div class="loginForm">
-    <form hx-post="login.php" hx-target="#error-message" hx-swap="innerHTML">
-        <div id="error-message" style="background-color: black; color: red;"></div>
+    <form hx-post="register.php" hx-target="#error-message" hx-swap="innerHTML">
+        <div id="error-message"></div>
         <table class="loginFields">
             <th>
-                <b>Login Form</b>
+                <b>Registration</b>
             </th>
             <tr>
                 <td>
@@ -84,13 +98,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </td>
             </tr>
             <th>
-                <button type="submit" id="login">Log In</button>
+                <button type="submit" id="login">Create Account</button>
             </th>
         </table>
     </form>
-    <a href="/register">
-        <button id="register">Register</button>
-    </a>
     </div>
 
 </div>
