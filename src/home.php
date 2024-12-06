@@ -7,7 +7,7 @@ if (!isset($_SESSION['username'])) {
     exit();
 }
 
-// else display homepage
+// and display homepage if thats the case
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +16,7 @@ if (!isset($_SESSION['username'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Xtremely Secure - Home</title>
-    <link rel="stylesheet" href="./styles.css"/>
+    <link rel="stylesheet" href="assets/styles.css"/>
 </head>
 
 <body>

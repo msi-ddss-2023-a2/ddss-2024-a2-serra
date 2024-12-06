@@ -64,11 +64,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Xtremely Secure - Register</title>
-    <link rel="stylesheet" href="./styles.css"/>
-    
-    <script src="./htmx.min.js"></script>
+    <link rel="stylesheet" href="assets/styles.css"/>
+    <script src="assets/htmx.min.js"></script>
     <meta name="htmx-config" content='{"selfRequestsOnly":false}'>
-    
 </head>
 
 <body>

@@ -1,4 +1,7 @@
 RewriteEngine On
+RewriteBase /
+
+RewriteRule ^$ /home [R=301,L]
 
 # remove .php extension
 RewriteCond %{REQUEST_FILENAME} !-d
