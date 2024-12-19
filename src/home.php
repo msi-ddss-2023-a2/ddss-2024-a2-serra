@@ -48,7 +48,7 @@ if (!isset($_SESSION['username'])) {
     <div class="lastPosts">
     <table>
         <thead>
-            <tr><b>Output Zone</b></tr>
+            <th><b>Output Zone</b></th>
         </thead>
         <tbody id="output-body">
 

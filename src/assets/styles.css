@@ -17,6 +17,8 @@ body {
     align-items: center;
 }
 
+/* Login and register */
+
 .loginForm {
     width: 300px;
     height: auto;
@@ -38,6 +40,8 @@ th {
     vertical-align: middle;
     text-align: center;
 }
+
+/* Post content and Latest posts */
 
 .contentForm {
     width: 666px;
@@ -71,5 +75,32 @@ th {
 
 .lastPosts td {
     border: 1px gray inset;
+}
+
+/* Search */
+
+.searchForm {
+    padding: 5px;
+
+    background-color: rgb(213, 103, 103);
+    border: 5px gray solid;
+    border-style:inset;
+}
+
+.foundPost {
+    width: 555px;
+    height: auto;
+
+    padding: 5px;
+
+    background-color: rgb(224, 194, 194);
+    border: 5px gray solid;
+    border-style:inset;
+}
+
+.foundBody {
+    padding: 5px;
+
+    border: 1px solid black;
 }
 

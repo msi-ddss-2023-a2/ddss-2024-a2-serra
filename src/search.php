@@ -24,20 +24,49 @@ if (!isset($_SESSION['username'])) {
 <body>
 <div class="main">
 
-    <div class="contentForm">
-    <form class="contentFields"
-    hx-post="home.php" 
-    hx-target="#error-message" 
+    <div class="searchForm">
+    <form class="searchFields"
+    hx-get="find-post.php"
+    hx-target="#found-body"
     hx-swap="innerHTML">
         <div id="error-message"></div>
-        <h3>Content Search Area</h3>
+        
+        <table>
+            <thead>
+                <th><b>Content Search Area</b></th>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td><label for="title">Title</label></td>
+                    <td>
+                        <input type="text" id="title" name="title"></input>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="author">Author</label></td>
+                    <td>
+                        <input type="text" id="author" name="author"></input>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <button
+        type="submit" 
+        id="find">Find Post</button>
     </form>
+
     </br>
+
     <a href='/home'>
         <button>Go To Content Posting Area</button>
     </a>
     </div>
 
+    <div class="foundPost">
+        <b>Found Post</b>
+        <div id="found-body" class="foundBody"></div>
+    </div>
 </div>
 </body>
 </html>

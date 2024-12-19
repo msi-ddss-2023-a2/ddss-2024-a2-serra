@@ -73,7 +73,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <div class="main">
 
     <div class="loginForm">
-    <form hx-post="register.php" hx-target="#error-message" hx-swap="innerHTML">
+    <form 
+    hx-post="register.php" 
+    hx-target="#error-message" 
+    hx-swap="innerHTML">
         <div id="error-message"></div>
         <table class="loginFields">
             <th>
