@@ -11,6 +11,8 @@ body {
     height: 100%;
 
     display: flex;
+    flex-direction:column;
+    gap: 15px;
     justify-content: center;
     align-items: center;
 }
@@ -35,5 +37,39 @@ th {
 
     vertical-align: middle;
     text-align: center;
+}
+
+.contentForm {
+    width: 666px;
+    height: auto;
+
+    padding: 5px;
+
+    background-color: rgb(213, 103, 103);
+    border: 5px gray solid;
+    border-style:inset;
+}
+
+.contentFields {
+    display: flex;
+    flex-direction: column;
+
+    gap: 7px;
+    padding: 5px;
+}
+
+.lastPosts {
+    width: 555px;
+    height:auto;
+
+    padding: 5px;
+    
+    background-color: rgb(224, 194, 194);
+    border: 5px gray solid;
+    border-style:inset;
+}
+
+.lastPosts td {
+    border: 1px gray inset;
 }
 

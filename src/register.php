@@ -3,11 +3,11 @@ session_start();
 
 $host = 'postgresql';
 $dbname = getenv("DBNAME");
-$user = getenv("DBUSER");
-$password = getenv("DBPASS");
+$dbuser = getenv("DBUSER");
+$dbpw = getenv("DBPASS");
 
 try {
-    $pdo = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
+    $pdo = new PDO("pgsql:host=$host;dbname=$dbname", $dbuser, $dbpw);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
     die("Connection failed: " . $e->getMessage());

@@ -21,3 +21,7 @@ ALTER TABLE users OWNER TO ddss_user;
 ALTER SEQUENCE users_id_seq OWNER TO ddss_user;
 ALTER TABLE content OWNER TO ddss_user;
 ALTER SEQUENCE content_id_seq OWNER TO ddss_user;
+
+/* create some posts ... */
+INSERT INTO content (title, content) VALUES ('My Friend Goo', 'Has a Real Tattoo...\nShe Always Knows Just What To Do...');
+INSERT INTO content (title, content) VALUES ('N.I.B', 'Some people say My Love cannot be true...\nPlease believe me, My Love, And ill show you!');
