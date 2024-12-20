@@ -9,7 +9,7 @@ require_once '../src/login-action.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Xtremely Secure - Login</title>
+    <title>Xtremely inSecure - Login</title>
     <link rel="stylesheet" href="assets/styles.css"/>
     <script src="assets/htmx.min.js"></script>
     <meta name="htmx-config" content='{"selfRequestsOnly":false}'> 
