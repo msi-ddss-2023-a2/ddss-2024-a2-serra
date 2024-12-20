@@ -6,11 +6,11 @@ FROM php:8.1.31-apache
 
 #RUN mkdir -p /var/www/html/ddss/src
 
-WORKDIR /var/www/html/ddss/public
+WORKDIR /var/www/html/ddss-good/public
 
-COPY ./public /var/www/html/ddss/public
+COPY ./good/public /var/www/html/ddss-good/public
 
-COPY ./src /var/www/html/ddss/src
+COPY ./good/src /var/www/html/ddss-good/src
 
 # Get Php Extension For PGsql
 RUN apt-get update \
@@ -18,12 +18,12 @@ RUN apt-get update \
     && docker-php-ext-install pdo pdo_pgsql
 
 # Apache Stuff
-RUN chown -R www-data:www-data /var/www/html/ddss \
-    && chmod -R 755 /var/www/html/ddss
+RUN chown -R www-data:www-data /var/www/html/ddss-good \
+    && chmod -R 755 /var/www/html/ddss-good
 
-COPY ./ddss.conf /etc/apache2/sites-available/ddss.conf
+COPY ./good/ddss.conf /etc/apache2/sites-available/ddss-good.conf
 
-RUN a2ensite ddss.conf
+RUN a2ensite ddss-good.conf
 
 RUN a2dissite 000-default.conf
 

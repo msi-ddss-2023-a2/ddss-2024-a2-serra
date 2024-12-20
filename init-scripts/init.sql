@@ -3,7 +3,13 @@
 CREATE TABLE users(
     id SERIAL PRIMARY KEY,
     username VARCHAR(100),
-    password TEXT NOT NULL
+    password TEXT NOT NULL  /* Hashed */
+);
+
+CREATE TABLE users_unsafe(
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(100),
+    password TEXT NOT NULL  /* Not hashed */
 );
 
 CREATE TABLE content(
@@ -19,9 +25,12 @@ ALTER DATABASE ddss_db OWNER TO ddss_user;
 
 ALTER TABLE users OWNER TO ddss_user;
 ALTER SEQUENCE users_id_seq OWNER TO ddss_user;
+ALTER TABLE users_unsafe OWNER TO ddss_user;
+ALTER SEQUENCE users_unsafe_id_seq OWNER TO ddss_user;
 ALTER TABLE content OWNER TO ddss_user;
 ALTER SEQUENCE content_id_seq OWNER TO ddss_user;
 
 /* create some posts ... */
 INSERT INTO content (title, content) VALUES ('My Friend Goo', 'Has a Real Tattoo...\nShe Always Knows Just What To Do...');
 INSERT INTO content (title, content) VALUES ('N.I.B', 'Some people say My Love cannot be true...\nPlease believe me, My Love, And ill show you!');
+INSERT INTO content (title, content) VALUES ('Cottonwool', 'I could wrap you up in cottonwool.');

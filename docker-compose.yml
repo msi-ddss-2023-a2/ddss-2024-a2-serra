@@ -1,16 +1,33 @@
 services:
-  php:
-    # image: php:8.1.31-apache
+  php-good:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: ./good/Dockerfile
     environment:
       DBNAME: ${DBNAME}
       DBUSER: ${DBUSER}
       DBPASS: ${PSQLUSERPASS}
     volumes:
-      - ./src:/var/www/html/ddss/src
-      - ./public:/var/www/html/ddss/public
+      - ./good/src:/var/www/html/ddss-good/src
+      - ./good/public:/var/www/html/ddss-good/public
+    depends_on:
+      - postgresql
+    ports:
+      - 0:80
+    networks:
+      - mynetwork
+
+  php-bad:
+    build:
+      context: .
+      dockerfile: ./bad/Dockerfile
+    environment:
+      DBNAME: ${DBNAME}
+      DBUSER: ${DBUSER}
+      DBPASS: ${PSQLUSERPASS}
+    volumes:
+      - ./bad/src:/var/www/html/ddss-bad/src
+      - ./bad/public:/var/www/html/ddss-bad/public
     depends_on:
       - postgresql
     ports:
