@@ -6,8 +6,8 @@ if (!isset($_SESSION)) {
 require_once 'include/db.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $username = trim($_POST['username']);
-    $password = trim($_POST['password']);
+    $username = htmlspecialchars(trim($_POST['username'])); // Possibly fix XSS vuln
+    $password = htmlspecialchars(trim($_POST['password']));
 
     $sql = "SELECT id, username, password FROM users WHERE username = :username LIMIT 1";
     $stmt = $pdo->prepare($sql);    // prepares sql statement (good)
@@ -18,19 +18,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // matches password against a hash (good)
     if ($user && password_verify($password, $user['password'])) {
-        $_SESSION['user_id'] = $user['id'];
+        session_regenerate_id(true);
         $_SESSION['username'] = $user['username'];
 
-        // header("Location: home");
-        header("HX-Redirect: home");
-        die();
+        header("HX-Redirect: home");    // because im using htmx in frontend
     } else {
-        // http_response_code(401);
         echo "Invalid username or password";
-        die();
     }
 
-    // $stmt = null;
-    // $pdo = null;
+    unset($pdo);
 }
 ?>

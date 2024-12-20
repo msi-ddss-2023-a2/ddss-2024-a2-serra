@@ -6,7 +6,7 @@ if (!isset($_SESSION)) {
 require_once 'include/db.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $username = trim($_POST['username']);
+    $username = trim($_POST['username']);   // Possible XSS vuln
     $password = trim($_POST['password']);
 
     $sql = "SELECT id, username, password FROM users_unsafe WHERE 
@@ -16,21 +16,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    // matches password against a hash (good)
+    // matches password against a string (bad)
     if ($user && $password == $user['password']) {
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['username'] = $user['username'];
 
-        // header("Location: home");
-        header("HX-Redirect: home");
-        die();
+        header("HX-Redirect: home"); // because im using htmx in frontend
     } else {
-        // http_response_code(401);
         echo "Invalid username or password";
         die();
     }
 
-    // $stmt = null;
-    // $pdo = null;
+    $pdo = null;
 }
 ?>

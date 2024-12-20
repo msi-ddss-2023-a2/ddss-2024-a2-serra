@@ -31,16 +31,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->bindParam(':password', $hashed_pw, PDO::PARAM_STR);
 
     if ($stmt->execute()) {
-        // header("Location: login");
         echo "Registration successful! You may now <a href='/login'>login</a> as " . htmlspecialchars($username) . ".";
-        // sleep(2);
-        die();
     } else {
         echo "Error: " . $stmt->error;
-        die();
     }
 
-    // $stmt = null;
-    // $pdo = null;
+    unset($pdo);
 }
 ?>

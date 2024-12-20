@@ -31,7 +31,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         die();
     }
 
-    // $stmt = null;
-    // $pdo = null;
+    $pdo = null;
 }
 ?>
