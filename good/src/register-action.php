@@ -32,8 +32,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if ($stmt->execute()) {
         echo "Registration successful! You may now <a href='/login'>login</a> as " . htmlspecialchars($username) . ".";
+        die();
     } else {
         echo "Error: " . $stmt->error;
+        die();
     }
 
     unset($pdo);
