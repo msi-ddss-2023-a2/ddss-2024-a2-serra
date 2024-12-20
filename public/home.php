@@ -1,5 +1,7 @@
 <?php
-session_start();
+if (!isset($_SESSION)) {
+    session_start();
+}
 
 // check if logged in
 if (!isset($_SESSION['username'])) {
@@ -24,7 +26,7 @@ if (!isset($_SESSION['username'])) {
 
     <div class="contentForm">
     <form class="contentFields"
-    hx-post="create-new-post.php" 
+    hx-post="api.php?file=create-new-post.php" 
     hx-target="#error-message" 
     hx-swap="innerHTML">
         <div id="error-message"></div>
@@ -57,7 +59,7 @@ if (!isset($_SESSION['username'])) {
     </div>
 
     <button
-    hx-get="get-last-posts.php"
+    hx-get="api.php?file=get-last-posts.php"
     hx-target="#output-body"
     hx-swap="innerHTML">Get Latest Posts</button>
 

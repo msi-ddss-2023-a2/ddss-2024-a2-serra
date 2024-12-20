@@ -1,17 +1,7 @@
 <?php
-session_start();
+// session_start();
 
-$host = 'postgresql';
-$dbname = getenv("DBNAME");
-$dbuser = getenv("DBUSER");
-$dbpw = getenv("DBPASS");
-
-try {
-    $pdo = new PDO("pgsql:host=$host;dbname=$dbname", $dbuser, $dbpw);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die("Connection failed: " . $e->getMessage());
-}
+require_once '../src/include/db.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = trim($_POST['username']);
@@ -52,8 +42,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         die();
     }
 
-    $stmt = null;
-    $pdo = null;
+    // $stmt = null;
+    // $pdo = null;
 }
 ?>
 
@@ -74,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     <div class="loginForm">
     <form 
-    hx-post="register.php" 
+    hx-post="/register" 
     hx-target="#error-message" 
     hx-swap="innerHTML">
         <div id="error-message"></div>

@@ -9,7 +9,8 @@ services:
       DBUSER: ${DBUSER}
       DBPASS: ${PSQLUSERPASS}
     volumes:
-      - ./src:/var/www/html
+      - ./src:/var/www/html/ddss/src
+      - ./public:/var/www/html/ddss/public
     depends_on:
       - postgresql
     ports:

@@ -1,16 +1,6 @@
 <?php
 
-$host = 'postgresql';
-$dbname = getenv("DBNAME");
-$dbuser = getenv("DBUSER");
-$dbpw = getenv("DBPASS");
-
-try {
-    $pdo = new PDO("pgsql:host=$host;dbname=$dbname", $dbuser, $dbpw);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die("Connection failed: " . $e->getMessage());
-}
+require_once 'include/db.php';
 
 $sql = "SELECT * FROM content ORDER BY created_at DESC LIMIT 3";
 $stmt = $pdo->prepare($sql);

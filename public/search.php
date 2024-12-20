@@ -1,5 +1,7 @@
 <?php
-session_start();
+if (!isset($_SESSION)) {
+    session_start();
+}
 
 // check if logged in
 if (!isset($_SESSION['username'])) {
@@ -26,7 +28,7 @@ if (!isset($_SESSION['username'])) {
 
     <div class="searchForm">
     <form class="searchFields"
-    hx-get="find-post.php"
+    hx-get="api.php?file=find-post.php"
     hx-target="#found-body"
     hx-swap="innerHTML">
         <div id="error-message"></div>

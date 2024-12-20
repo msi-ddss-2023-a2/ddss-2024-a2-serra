@@ -1,17 +1,9 @@
 <?php
-session_start();
-
-$host = 'postgresql';
-$dbname = getenv("DBNAME");
-$dbuser = getenv("DBUSER");
-$dbpw = getenv("DBPASS");
-
-try {
-    $pdo = new PDO("pgsql:host=$host;dbname=$dbname", $dbuser, $dbpw);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die("Connection failed: " . $e->getMessage());
+if (!isset($_SESSION)) {
+    session_start();
 }
+
+require_once 'include/db.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $title = trim($_POST['title']);
