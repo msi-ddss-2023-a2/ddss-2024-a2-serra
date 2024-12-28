@@ -2,7 +2,7 @@
 
 require_once 'include/db.php';
 
-$sql = "SELECT * FROM content_unsafe ORDER BY created_at DESC LIMIT 3";
+$sql = "SELECT * FROM content_unsafe ORDER BY title DESC LIMIT 3";
 $stmt = $pdo->prepare($sql);
 $stmt->execute();
 $rows = $stmt->fetchAll();
