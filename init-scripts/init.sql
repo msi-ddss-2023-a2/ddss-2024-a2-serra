@@ -16,14 +16,14 @@ CREATE TABLE content(
     id SERIAL PRIMARY KEY,
     user_id INT REFERENCES users(id) ON DELETE CASCADE,
     title VARCHAR(255) NOT NULL,
-    content TEXT NOT NULL,
+    content TEXT NOT NULL
 );
 
 CREATE TABLE content_unsafe(
     id SERIAL PRIMARY KEY,
     user_id INT REFERENCES users_unsafe(id) ON DELETE CASCADE,
     title VARCHAR(255) NOT NULL,
-    content TEXT NOT NULL,
+    content TEXT NOT NULL
 );
 
 ALTER DATABASE ddss_db OWNER TO ddss_user;
@@ -35,7 +35,7 @@ ALTER SEQUENCE users_unsafe_id_seq OWNER TO ddss_user;
 ALTER TABLE content OWNER TO ddss_user;
 ALTER SEQUENCE content_id_seq OWNER TO ddss_user;
 ALTER TABLE content_unsafe OWNER TO ddss_user;
-ALTER SEQUENCE content_unsafe_id_sq OWNER TO ddss_user;
+ALTER SEQUENCE content_unsafe_id_seq OWNER TO ddss_user;
 
 /* create some posts ... */
 INSERT INTO content (title, content) VALUES ('My Friend Goo', 'Has a Real Tattoo...\nShe Always Knows Just What To Do...');
