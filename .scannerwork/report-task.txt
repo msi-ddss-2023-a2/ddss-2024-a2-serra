@@ -1,6 +1,0 @@
-projectKey=DDSS-A2
-serverUrl=http://localhost:9000
-serverVersion=24.12.0.100206
-dashboardUrl=http://localhost:9000/dashboard?id=DDSS-A2
-ceTaskId=36d5307c-2cf2-4a6c-9c75-1e0ec8867a1e
-ceTaskUrl=http://localhost:9000/api/ce/task?id=36d5307c-2cf2-4a6c-9c75-1e0ec8867a1e

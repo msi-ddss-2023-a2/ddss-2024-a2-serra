@@ -1,12 +1,0 @@
-r
-phpS1131@Remove the useless trailing whitespaces at the end of this line. 2	 
-b
-MAINTAINABILITYLOWr
-phpS1131@Remove the useless trailing whitespaces at the end of this line. 2 b
-MAINTAINABILITYLOWr
-phpS1131@Remove the useless trailing whitespaces at the end of this line. 2 b
-MAINTAINABILITYLOWN
-phpS113'Add a new line at the end of this file. b
-MAINTAINABILITYLOW„
-phpS4833QReplace "require_once" with namespace import mechanism through the "use" keyword. 2 b
-MAINTAINABILITYMEDIUM
