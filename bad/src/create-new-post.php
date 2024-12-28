@@ -10,13 +10,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $textcontent  = trim($_POST['textbox']);
     $user_id = $_SESSION['user_id'];
 
-    $sql = "INSERT INTO content (user_id, title, content) VALUES (:user_id, :title, :textcontent)";
-    $stmt = $pdo->prepare($sql);
-    $stmt->bindParam(":user_id", $user_id, PDO::PARAM_INT);
-    $stmt->bindParam(":title", $title, PDO::PARAM_STR);
-    $stmt->bindParam(":textcontent", $textcontent, PDO::PARAM_STR);
+    $sql = "INSERT INTO content (user_id, title, content) 
+        VALUES (" . $user_id . "," . $title . "," . $textcontent .")";
+    $stmt = $pdo->query($sql);
 
-    if ($stmt->execute()) {
+    if ($stmt) {
         echo "New post successfully created!";
 
         die();

@@ -24,6 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         header("HX-Redirect: home");    // because im using htmx in frontend
     } else {
         echo "Invalid username or password";
+        die();
     }
 
     unset($pdo);
