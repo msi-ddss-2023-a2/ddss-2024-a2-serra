@@ -6,7 +6,7 @@ $queried_title = $_GET['title'];
 $search_term = "%$queried_title%";
 
 $sql = "SELECT * FROM content WHERE title ILIKE " . $search_term;
-$stmt->execute();
+$stmt = $pdo->query($sql);
 
 if ($stmt) {
     $found_row = $stmt->fetch(PDO::FETCH_ASSOC);

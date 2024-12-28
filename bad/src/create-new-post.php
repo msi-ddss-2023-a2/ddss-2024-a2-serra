@@ -10,8 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $textcontent  = trim($_POST['textbox']);
     $user_id = $_SESSION['user_id'];
 
-    $sql = "INSERT INTO content (user_id, title, content) 
-        VALUES (" . $user_id . "," . $title . "," . $textcontent .")";
+    $sql = "INSERT INTO content (user_id, title, content) VALUES (" . $user_id . "," . $title . "," . $textcontent .")";
     $stmt = $pdo->query($sql);
 
     if ($stmt) {
