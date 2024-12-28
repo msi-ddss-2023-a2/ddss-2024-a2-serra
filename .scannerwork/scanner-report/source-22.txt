@@ -1,0 +1,106 @@
+body {
+    height: 100vh;
+
+    margin: 0;
+
+    background-color: rgb(158, 152, 152);
+}
+
+.main {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction:column;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Login and register */
+
+.loginForm {
+    width: 300px;
+    height: auto;
+
+    padding: 5px;
+
+    background-color: rgb(103, 169, 213);;
+    border: 5px gray solid;
+    border-style:inset;
+}
+
+td {
+    padding: 5px;
+}
+
+th {
+    padding: 5px;
+
+    vertical-align: middle;
+    text-align: center;
+}
+
+/* Post content and Latest posts */
+
+.contentForm {
+    width: 666px;
+    height: auto;
+
+    padding: 5px;
+
+    background-color: rgb(103, 169, 213);
+    border: 5px gray solid;
+    border-style:inset;
+}
+
+.contentFields {
+    display: flex;
+    flex-direction: column;
+
+    gap: 7px;
+    padding: 5px;
+}
+
+.lastPosts {
+    width: 555px;
+    height:auto;
+
+    padding: 5px;
+    
+    background-color: rgb(224, 194, 194);
+    border: 5px gray solid;
+    border-style:inset;
+}
+
+.lastPosts td {
+    border: 1px gray inset;
+}
+
+/* Search */
+
+.searchForm {
+    padding: 5px;
+
+    background-color: rgb(103, 169, 213);;
+    border: 5px gray solid;
+    border-style:inset;
+}
+
+.foundPost {
+    width: 555px;
+    height: auto;
+
+    padding: 5px;
+
+    background-color: rgb(224, 194, 194);
+    border: 5px gray solid;
+    border-style:inset;
+}
+
+.foundBody {
+    padding: 5px;
+
+    border: 1px solid black;
+}
+
