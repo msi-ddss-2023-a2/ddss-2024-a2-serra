@@ -5,7 +5,7 @@ require_once 'include/db.php';
 $queried_title = $_GET['title'];
 $search_term = "%$queried_title%";
 
-$sql = "SELECT * FROM content WHERE title ILIKE " . $search_term;
+$sql = "SELECT * FROM content_unsafe WHERE title ILIKE '$search_term'";
 $stmt = $pdo->query($sql);
 
 if ($stmt) {

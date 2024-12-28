@@ -10,8 +10,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $textcontent  = trim($_POST['textbox']);
     $user_id = $_SESSION['user_id'];
 
-    $sql = "INSERT INTO content (user_id, title, content) VALUES (" . $user_id . "," . $title . "," . $textcontent .")";
-    $stmt = $pdo->query($sql);
+    $sql = "INSERT INTO content_unsafe (user_id, title, content) VALUES (" . $user_id . ", '" . $title . "', '" . $textcontent . "')";
+    $stmt = $pdo->exec($sql);
 
     if ($stmt) {
         echo "New post successfully created!";
